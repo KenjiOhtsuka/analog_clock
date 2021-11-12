@@ -6,8 +6,10 @@
           content="width=device-width, height=device-height, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="vue.global.prod.js"></script>
+    <link rel="stylesheet" media="all and (orientation:portrait)" href="portrait.css">
     <title>Document</title>
     <style>
+         @viewport { orientation: portrait; }  
         html {
             background: #f8f8f8;
             text-align: center;
@@ -191,6 +193,11 @@
         <button @click="speak()" class="speech-button">いまなんじ？</button>
     </div>
     <script>
+        try {
+            screen.lockOrientation('portrait');
+        } catch (e) {
+            // pass
+        }
         Vue.createApp({
             data() {
                 return {
